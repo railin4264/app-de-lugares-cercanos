@@ -1,0 +1,18 @@
+<ActionBar title="Buscar Lugares Cercanos"></ActionBar>
+
+<StackLayout class="p-4">
+  <Label text="Bienvenido a la aplicación de búsqueda de lugares cercanos" class="text-xl text-center mb-4"></Label>
+  
+  <StackLayout *ngIf="isLoading" class="mb-4">
+    <ActivityIndicator busy="true"></ActivityIndicator>
+    <Label text="Obteniendo ubicación..." class="text-center"></Label>
+  </StackLayout>
+
+  <StackLayout *ngIf="!isLoading">
+    <Label *ngIf="latitude && longitude" text="Ubicación actual:" class="font-bold mb-2"></Label>
+    <Label *ngIf="latitude && longitude" [text]="'Latitud: ' + latitude" class="mb-1"></Label>
+    <Label *ngIf="latitude && longitude" [text]="'Longitud: ' + longitude" class="mb-4"></Label>
+
+    <Button text="Buscar lugares cercanos" (tap)="searchPlaces()" class="btn btn-primary"></Button>
+  </StackLayout>
+</StackLayout>

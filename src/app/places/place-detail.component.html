@@ -1,0 +1,17 @@
+<ActionBar [title]="place?.name || 'Detalles del lugar'">
+  <NavigationButton (tap)="routerExtensions.back()" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <ActivityIndicator *ngIf="isLoading" busy="true"></ActivityIndicator>
+
+    <StackLayout *ngIf="place">
+      <Label [text]="place.name" class="text-2xl font-bold mb-2"></Label>
+      <Label [text]="'Dirección: ' + place.address" class="mb-2"></Label>
+      <Label [text]="'Categorías: ' + place.categories.join(', ')" class="mb-2"></Label>
+      <Label *ngIf="place.phone" [text]="'Teléfono: ' + place.phone" class="mb-2"></Label>
+      <Label *ngIf="place.website" [text]="'Sitio web: ' + place.website" class="mb-2"></Label>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>

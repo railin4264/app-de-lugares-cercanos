@@ -1,0 +1,17 @@
+<ActionBar title="Lugares Cercanos">
+  <NavigationButton (tap)="routerExtensions.back()" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<StackLayout class="p-4">
+  <ActivityIndicator *ngIf="isLoading" busy="true"></ActivityIndicator>
+
+  <ListView [items]="places" (itemTap)="onItemTap($event)" class="list-group">
+    <ng-template let-place="item">
+      <StackLayout class="list-group-item">
+        <Label [text]="place.name" class="text-lg font-bold"></Label>
+        <Label [text]="place.address" class="text-sm text-gray-500"></Label>
+        <Label [text]="'Distancia: ' + place.distance.toFixed(2) + ' m'" class="text-sm text-gray-500"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>
